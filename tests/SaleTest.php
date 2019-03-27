@@ -2,6 +2,8 @@
 
 use App\Models\Sale;
 use App\Models\Item;
+use App\Http\Controllers\SalesControllers;
+
 /**
  * Class SaleTest
  */
@@ -13,7 +15,7 @@ class SaleTest extends TestCase
     /**
      * Sets up the Sale.
      */
-    protected function setSale() :void
+    protected function setSale(): void
     {
         $Sale = new Sale();
         $Sale->day_of_sale = '2017-02-02';
@@ -24,7 +26,7 @@ class SaleTest extends TestCase
     /**
      * Adds items to a Sale.
      */
-    protected function addItems() :void
+    protected function addItems(): void
     {
         $this->Sale->addItems([
             Item::find(1),
@@ -63,26 +65,31 @@ class SaleTest extends TestCase
     public function testSaleList()
     {
         /** @var \App\Models\Sale $Sale */
-        $SalesController = new \App\Http\Controllers\SalesControllers();
+        $SalesController = new SalesControllers();
         $SalesCollection = $SalesController->list('2018-01-01');
 
         $this->assertTrue($SalesCollection->count() >= 1);
     }
 
+    /**
+     * Updates a Sale item list.
+     *
+     * @throws Exception
+     */
     public function testSaleUpdate()
     {
         $this->setSale();
         $this->Sale->addItems([
-            \App\Models\Item::find(1)
+            Item::find(1)
         ]);
 
         $this->assertTrue($this->Sale->getItems()->count() == 1);
 
         /** @var \App\Models\Sale $Sale */
-        $SalesController = new \App\Http\Controllers\SalesControllers();
+        $SalesController = new SalesControllers();
         $SalesController = $SalesController->update($this->Sale->id, [
-            \App\Models\Item::find(2),
-            \App\Models\Item::find(3)
+            Item::find(2),
+            Item::find(3)
         ]);
 
         $this->assertTrue($SalesController->getItems()->count() == 2);
