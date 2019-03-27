@@ -1,11 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
 
-
 use App\Models\Sale;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class SalesControllers
+ *
+ * @package App\Http\Controllers
+ */
 class SalesControllers extends Controller
 {
     /**
@@ -25,6 +30,11 @@ class SalesControllers extends Controller
         return $QuerBuilder->get();
     }
 
+    /**
+     * Creates a Sale.
+     *
+     * @param Request $request
+     */
     public function create(Request $request)
     {
         $Sales = new Sale();
@@ -46,10 +56,5 @@ class SalesControllers extends Controller
         $Sale->removeItems()->addItems($items);
 
         return $Sale;
-    }
-
-    public function delete()
-    {
-
     }
 }
