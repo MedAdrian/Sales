@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class ItemSale extends Model
 {
     protected $table = 'sale_item';
+    public $timestamps = false;
 
     /**
      * Retrieves a Collection of Items.
