@@ -18,9 +18,9 @@ jobs:
       - image: circleci/mysql:latest-ram
         environment:
           MYSQL_DATABASE: sales
-          MYSQL_HOST=127.0.0.1
+          MYSQL_HOST: 127.0.0.1
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_USER=root
+          MYSQL_USER: root
 
           
     steps:
