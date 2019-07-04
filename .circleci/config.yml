@@ -10,18 +10,13 @@ jobs:
           
     steps:
       - checkout
-      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
       - run: composer install -n --prefer-dist
-            
       #Migrations
-      - run: php artisan migrate
-      
+      - run: yes | php artisan migrate:refresh
       #Seeders
       - run: php artisan make:seeder ItemsTableSeeder
       - run: php artisan make:seeder SalesTableSeeder
       - run: php artisan make:seeder SalesItemsSeeder      
-      
       # run tests with phpunit or codecept
       - run: ./vendor/bin/phpunit
       - store_test_results:
