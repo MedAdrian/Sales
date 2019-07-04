@@ -10,7 +10,7 @@ jobs:
           
     steps:
       - checkout
-      - run: apt-get update && apt-get -y install git unzip zlib1g-dev
+      - run: sudo apt-get update && apt-get -y install git unzip zlib1g-dev
       - run: docker-php-ext-install pdo pdo_mysql zip
       - run: composer install -n --prefer-dist
       #Migrations
