@@ -3,10 +3,25 @@ jobs:
   build:
     docker:
       - image: circleci/php:latest-node-browsers-legacy
+        environment:
+          APP_ENV: local
+          APP_DEBUG: true
+          APP_KEY: kjcndjjksddwdwdw
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: sales
+          DB_USERNAME: root
+          DB_PASSWORD: password
+          CACHE_DRIVER: memcached
+          QUEUE_DRIVER: sync
       - image: circleci/mysql:latest-ram
         environment:
           MYSQL_DATABASE: sales
-          MYSQL_ROOT_PASSWORD: password          
+          MYSQL_HOST=127.0.0.1
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_USER=root
+
           
     steps:
       - checkout
