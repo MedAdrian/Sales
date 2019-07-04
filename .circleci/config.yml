@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run: composer install -n --prefer-dist
       #Migrations
-      - run: yes | php artisan migrate:refresh
+      - run: php artisan migrate --force
       #Seeders
       - run: php artisan make:seeder ItemsTableSeeder
       - run: php artisan make:seeder SalesTableSeeder
