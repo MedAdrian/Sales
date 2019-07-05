@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/MedAdrian/Sales/tree/master.svg?style=svg)](https://circleci.com/gh/MedAdrian/Sales/tree/master)
+
 # Sales CRUD with phpUnit and Lumen
 
 Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
@@ -17,9 +19,9 @@ Laravel Lumen is a stunningly fast PHP micro-framework for building web applicat
 
 5. Run the laravel migrations and seeds with the commands:
     - php artisan migrate
-    - php artisan make:seeder ItemsTableSeeder
-    - php artisan make:seeder SalesTableSeeder
-    - php artisan make:seeder SalesItemsSeeder
+    - php artisan db:seed --class=ItemsTableSeeder
+    - php artisan db:seed --class=SalesTableSeeder
+    - php artisan db:seed --class=SalesItemsTableSeeder
     
 # How to test
 Run the command listed below on the console:
