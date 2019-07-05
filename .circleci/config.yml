@@ -29,7 +29,9 @@ jobs:
       #Migrations
       - run: php artisan migrate --force
       #Seeders
-      - run: php artisan db:seed
+      - run: php artisan db:seed --class=ItemsTableSeeder
+      - run: php artisan db:seed --class=SalesTableSeeder
+      - run: php artisan db:seed --class=SalesItemsTableSeeder
   
       # run tests with phpunit
       - run: ./vendor/bin/phpunit
